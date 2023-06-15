@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>.game {
+        width: 600px;
+        height: 200px;
+        border-bottom: 1px solid black;
+        margin: auto;
+        
+    }
+    .logo {
+        right: 0;
+        left: 0;
+        width: 150px;
+        height: 150px;
+    }
+    #keng {
+        width: 50px;
+        height: 50px;
+        background-image: url(./images/154-1542429_hopper-logo-vector-by-windytheplaneh-dish-hopper-logo-png.png);
+        background-size: 50px 50px;
+        position: relative;
+        top: 150px;
+    }
+    
+    #cactus {
+        width: 20px;
+        height: 40px;
+        background-image: url(./images/Noto_Emoji_Oreo_1f335.svg.png);
+        background-size: 20px 40px;
+        position: relative;
+        top: 110px;
+        left: 580px;
+        animation: cactusMov 1.5s infinite linear;
+    }
+    @keyframes cactusMov {
+        0% {
+            left: 580px;
+        }
+        100%{
+            left: -20px;
+        }
+    }
+    
+    .jump {
+        animation: jump 0.5s linear;
+    }
+    
+    @keyframes jump {
+        0% {
+            top: 150px;
+        }
+        10% {
+            top: 140px;
+        }
+        20% {
+            top: 130px;
+        }
+        30% {
+           top: 120px;
+        }
+        40% {
+            top: 110px;
+        }
+    
+        50% {
+            top: 90px;
+        }
+        60% {
+            top: 110px;
+        }
+        70% {
+            top: 120px;
+        }
+        
+        80% {
+            top: 130px;
+        }
+        90% {
+            top: 140px;
+        }
+        100% {
+            top: 150px;
+        }
+    }</style>
+    
+</head>
+<body>
+    <img class="logo" src="./images/k0Y9EAEUnfY.png">
+    <div class="game">
+        <div id="keng"></div>
+        <div id="cactus"></div>
+    </div>
+    <script>const keng = document.getElementById("keng")
+        const cactus = document.getElementById("cactus")
+        
+        document.addEventListener("keydown", function(event){
+            jump();
+        });
+        
+        function jump () {
+            if (keng.classList != "jump") {
+                keng.classList.add("jump")
+            }
+            setTimeout(function() {
+                keng.classList.remove("jump")
+            }, 300
+            )
+        }
+        
+        
+        let isAlive = setInterval(function() {
+            let kengTop = parseInt(window.getComputedStyle(keng).getPropertyValue("top"))
+            let cactusLeft = parseInt(window.getComputedStyle(cactus).getPropertyValue("left"))
+            if (cactusLeft < 50 && cactusLeft > 0 && kengTop >= 140) {
+                alert("GAME OVER!")
+            }
+        }, 10)</script>
+</body>
+</html>
